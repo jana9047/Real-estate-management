@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f7f7f7;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+
+    <script>
+       
+        let bookedHouses = [];
+
+      
+        function bookHouse(houseId, houseName) {
+           
+            if (bookedHouses.some(house => house.id === houseId)) {
+                alert(`House ${houseName} is already booked.`);
+                return;
+            }
+
+          
+            bookedHouses.push({ id: houseId, name: houseName });
+
+   
+            const houseCard = document.getElementById(`house-${houseId}`);
+            houseCard.parentNode.removeChild(houseCard);
+            alert(`House ${houseName} has been booked successfully!`);
+        }
+
+        
+        function fetchBookedHouses() {
+            if (bookedHouses.length === 0) {
+                alert('No houses booked yet.');
+                return;
+            }
+
+            const bookedList = bookedHouses.map(house =>" You Booked the "+house.name).join('');
+            
+         
+            alert(`Booked Houses:\n${bookedList}`);
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="text-center mb-4">Available Houses for Booking</h1>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" id="house-1">
+                    <img src="Images/service-1.jpg" class="card-img-top" alt="House 1">
+                    <div class="card-body">
+                        <h5 class="card-title">House 1</h5>
+                        <p class="card-text">Address: 123 Main St</p>
+                        <p class="card-text">Price: $300,000</p>
+                        <button class="btn btn-primary" onclick="bookHouse(1, 'House 1')">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card" id="house-2">
+                    <img src="Images/service-2.jpg" class="card-img-top" alt="House 2">
+                    <div class="card-body">
+                        <h5 class="card-title">House 2</h5>
+                        <p class="card-text">Address: 456 Oak Ave</p>
+                        <p class="card-text">Price: $250,000</p>
+                        <button class="btn btn-primary" onclick="bookHouse(2, 'House 2')">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card" id="house-3">
+                    <img src="Images/service-3.jpg" class="card-img-top" alt="House 3">
+                    <div class="card-body">
+                        <h5 class="card-title">House 3</h5>
+                        <p class="card-text">Address: 789 Pine Rd</p>
+                        <p class="card-text">Price: $350,000</p>
+                        <button class="btn btn-primary" onclick="bookHouse(3, 'House 3')">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+        
+            <div class="col-md-4">
+                <div class="card" id="house-4">
+                    <img src="Images/service-4.jpg" class="card-img-top" alt="House 4">
+                    <div class="card-body">
+                        <h5 class="card-title">House 4</h5>
+                        <p class="card-text">Address: 987 Elm St</p>
+                        <p class="card-text">Price: $450,000</p>
+                        <button class="btn btn-primary" onclick="bookHouse(4, 'House 4')">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card" id="house-5">
+                    <img src="Images/service-5.jpg" class="card-img-top" alt="House 5">
+                    <div class="card-body">
+                        <h5 class="card-title">House 5</h5>
+                        <p class="card-text">Address: 543 Maple St</p>
+                        <p class="card-text">Price: $375,000</p>
+                        <button class="btn btn-primary" onclick="bookHouse(5, 'House 5')">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card" id="house-6">
+                    <img src="Images/service-6.jpg" class="card-img-top" alt="House 6">
+                    <div class="card-body">
+                        <h5 class="card-title">House 6</h5>
+                        <p class="card-text">Address: 222 Cedar St</p>
+                        <p class="card-text">Price: $650,000</p>
+                        <button class="btn btn-primary" onclick="bookHouse(6, 'House 6')">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button class="btn btn-secondary" onclick="fetchBookedHouses()">Show Booked Houses</button>
+        </div>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
