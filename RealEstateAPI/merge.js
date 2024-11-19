@@ -11,12 +11,13 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../RealEstate')));
 app.use(express.static(path.join(__dirname, '../Images')));
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../RealEstate', 'RealEstate.html'));
 });
 // MySQL database connection
 const db = mysql.createConnection({
-    host: 'localhost',
+    host: '127.0.0.1',
     user: 'root',
     password: 'Jana@9047',
     database: 'Student'
