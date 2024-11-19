@@ -10,6 +10,7 @@ const port = 9091; // Single port for the merged application
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../RealEstate')));
+app.use(express.static(path.join(__dirname, '../Images')));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../RealEstate', 'RealEstate.html'));
 });
