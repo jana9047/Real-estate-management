@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, '../RealEstate')));
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../RealEstate', 'index.html'));
+    res.sendFile(path.join(__dirname, '../RealEstate', 'RealEstate.html'));
 });
 const db = mysql.createConnection({
     host: 'localhost',
